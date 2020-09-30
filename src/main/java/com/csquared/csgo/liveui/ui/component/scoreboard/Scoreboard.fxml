@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root prefHeight="96.0" prefWidth="1920.0" style="-fx-background-color: #000000;" type="Pane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane fx:id="paneBoard" layoutX="765.0" prefHeight="96.0" prefWidth="390.0" style="-fx-background-color: transparent;">
+         <children>
+            <Rectangle fx:id="rectFirepowerTeamA" arcHeight="5.0" height="24.0" layoutY="72.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="195.0">
+               <fill>
+                  <LinearGradient endX="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.1764705926179886" green="0.33725491166114807" blue="0.6470588445663452" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.24705882370471954" green="0.25882354378700256" blue="0.45098039507865906" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill></Rectangle>
+            <Rectangle fx:id="rectFirepowerTeamB" arcHeight="5.0" height="24.0" layoutX="195.0" layoutY="72.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="195.0">
+               <fill>
+                  <LinearGradient endX="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.8980392217636108" green="0.4000000059604645" blue="0.2823529541492462" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.9450980424880981" green="0.6666666865348816" blue="0.08235294371843338" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle fx:id="rectBombCountdown" arcHeight="5.0" height="24.0" layoutY="48.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="390.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="0.22685185074806213" blue="0.22685185074806213" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.6710526347160339" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" fill="WHITE" height="72.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="390.0" />
+            <Label fx:id="lbFirepower" alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="75.0" prefHeight="15.0" prefWidth="188.0" text="FIREPOWER" textFill="#ffffff7f">
+               <font>
+                  <Font name="EuclidCircularA-Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbRound" alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="42.0" prefHeight="19.0" prefWidth="120.0" text="ROUND  0 / 30" textFill="#757575">
+               <font>
+                  <Font name="EuclidCircularA-Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbTeamAScore" alignment="CENTER" contentDisplay="CENTER" layoutX="70.0" layoutY="7.0" prefHeight="59.0" prefWidth="60.0" text="0" textFill="#3f4072">
+               <font>
+                  <Font name="EuclidCircularA-Bold" size="46.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbTeamBScore" alignment="CENTER" contentDisplay="CENTER" layoutX="259.0" layoutY="7.0" prefHeight="59.0" prefWidth="60.0" text="0" textFill="#e56647">
+               <font>
+                  <Font name="EuclidCircularA-Bold" size="46.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgTeamALogo" fitHeight="36.0" fitWidth="36.0" layoutX="18.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/smp_tyloo.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgTeamBLogo" fitHeight="36.0" fitWidth="36.0" layoutX="334.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/smp_vg.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lbTime" alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="11.0" prefHeight="24.0" prefWidth="120.0" text="0:00" textFill="#2f2f2f">
+               <font>
+                  <Font name="EuclidCircularA-Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgBombStatus" fitHeight="40.0" fitWidth="60.0" layoutX="165.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+         </children></Pane>
+      <Label fx:id="lbTeamAName" alignment="CENTER_RIGHT" layoutX="15.0" layoutY="14.0" prefHeight="46.0" prefWidth="721.0" text="Team A Name" textFill="WHITE">
+         <font>
+            <Font name="EuclidCircularA-Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbTeamBName" layoutX="1186.0" layoutY="14.0" prefHeight="46.0" prefWidth="721.0" text="Team B Name" textFill="WHITE">
+         <font>
+            <Font name="EuclidCircularA-Bold" size="36.0" />
+         </font>
+      </Label>
+   </children>
+</fx:root>

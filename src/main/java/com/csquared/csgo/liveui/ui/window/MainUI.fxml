@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.csquared.csgo.liveui.ui.component.playerlist.*?>
+<?import com.csquared.csgo.liveui.ui.component.scoreboard.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background:transparent;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.csquared.csgo.liveui.ui.window.MainController">
+   <children>
+      <Pane fx:id="paneSplash" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background:transparent;" visible="false">
+         <children>
+            <ImageView fitHeight="400.0" fitWidth="700.0" layoutX="610.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/pic_splash.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <Pane fx:id="paneObserverUI" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background:transparent;">
+         <children>
+            <Scoreboard fx:id="scoreboard" layoutY="42.0" onMouseClicked="#debug" prefHeight="96.0" prefWidth="1920.0" />
+            <PlayerList layoutY="520.0" />
+         </children>
+      </Pane>
+   </children>
+</Pane>

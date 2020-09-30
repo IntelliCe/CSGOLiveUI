@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.csquared.csgo.liveui.ui.component.playerlist.item.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root prefHeight="560.0" prefWidth="1920.0" style="-fx-background: transparent" type="Pane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <PlayerListItemLeft fx:id="playerItem1" layoutX="24.0" layoutY="106.0" />
+   <PlayerListItemLeft fx:id="playerItem2" layoutX="24.0" layoutY="192.0" />
+   <PlayerListItemLeft fx:id="playerItem3" layoutX="24.0" layoutY="278.0" />
+   <PlayerListItemLeft fx:id="playerItem4" layoutX="24.0" layoutY="364.0" />
+   <PlayerListItemLeft fx:id="playerItem5" layoutX="24.0" layoutY="450.0" />
+
+    <PlayerListItemRight fx:id="playerItem6" layoutX="1548.0" layoutY="106.0" />
+   <PlayerListItemRight fx:id="playerItem7" layoutX="1548.0" layoutY="192.0" />
+   <PlayerListItemRight fx:id="playerItem8" layoutX="1548.0" layoutY="278.0" />
+   <PlayerListItemRight fx:id="playerItem9" layoutX="1548.0" layoutY="364.0" />
+   <PlayerListItemRight fx:id="playerItem0" layoutX="1548.0" layoutY="450.0" />
+
+</fx:root>

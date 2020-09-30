@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root prefHeight="86.0" prefWidth="350.0" style="-fx-background: transparent;" type="Pane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle fx:id="rectBackground" height="86.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="350.0">
+         <fill>
+            <LinearGradient endX="0.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color opacity="0.8" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle fx:id="rectHealth" height="27.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="350.0">
+         <fill>
+            <LinearGradient endY="0.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.5490196347236633" green="0.1921568661928177" blue="0.5960784554481506" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5600000023841858" green="0.6626666784286499" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle fx:id="rectSelected" height="86.0" layoutX="191.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="159.0">
+         <fill>
+            <LinearGradient endX="0.0" endY="0.0" startX="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.5490196347236633" green="0.1921568661928177" blue="0.5960784554481506" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5699999928474426" green="0.6775000095367432" blue="1.0" opacity="0.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label fx:id="lbPlayerName" layoutX="18.0" layoutY="2.0" text="Player Name" textFill="WHITE">
+         <font>
+            <Font name="EuclidCircularA-Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbHealth" alignment="CENTER_RIGHT" layoutX="214.0" layoutY="2.0" prefHeight="23.0" prefWidth="36.0" text="100" textAlignment="RIGHT" textFill="WHITE">
+         <font>
+            <Font name="EuclidCircularA-Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbMoney" layoutX="18.0" layoutY="33.0" text="\$ 16000" textFill="#37be79">
+         <font>
+            <Font name="EuclidCircularA-Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="18.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/ic_kill.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lbKill" layoutX="38.0" layoutY="57.0" text="30 [5]" textFill="WHITE">
+         <font>
+            <Font name="EuclidCircularA-Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="12.0" fitWidth="12.0" layoutX="94.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/ic_death.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lbDeath" layoutX="115.0" layoutY="57.0" text="10" textFill="WHITE">
+         <font>
+            <Font name="EuclidCircularA-Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imgWeapon" fitHeight="26.0" fitWidth="100.0" layoutX="195.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/ic_deagle.png" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <ImageView fx:id="imgAvatar" fitHeight="86.0" fitWidth="86.0" layoutX="264.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/smp_s1mple.png" />
+         </image></ImageView>
+      <ImageView fx:id="imgArmor" fitHeight="20.0" fitWidth="20.0" layoutX="194.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/ic_kevlar.png" />
+         </image>
+      </ImageView>
+   </children>
+</fx:root>
