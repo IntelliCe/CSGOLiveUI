@@ -3,13 +3,14 @@
 <?import com.csquared.csgo.liveui.ui.component.utilityfield.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root prefHeight="86.0" prefWidth="350.0" style="-fx-background: transparent;" type="Pane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="paneRoot" onMouseClicked="#debug" prefHeight="86.0" prefWidth="350.0" style="-fx-background: transparent;" type="Pane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle fx:id="rectBackground" height="86.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="350.0">
          <fill>
@@ -111,7 +112,10 @@
       <ImageView fx:id="imgAvatar" fitHeight="86.0" fitWidth="86.0" layoutX="264.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@/smp_s1mple.png" />
-         </image></ImageView>
+         </image>
+         <effect>
+            <ColorAdjust />
+         </effect></ImageView>
       <ImageView fx:id="imgArmor" fitHeight="20.0" fitWidth="20.0" layoutX="194.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@/ic_kevlar.png" />
