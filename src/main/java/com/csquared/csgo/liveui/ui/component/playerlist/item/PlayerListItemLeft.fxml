@@ -32,16 +32,16 @@
       </Rectangle>
       <Rectangle fx:id="rectHealth" height="27.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="350.0">
          <fill>
-            <LinearGradient endY="0.0">
+            <LinearGradient endX="1.0" endY="1.0">
                <stops>
                   <Stop>
                      <color>
-                        <Color red="0.5490196347236633" green="0.1921568661928177" blue="0.5960784554481506" />
+                        <Color red="0.17787525057792664" green="0.20691195130348206" blue="0.5263158082962036" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="0.5600000023841858" green="0.6626666784286499" blue="1.0" />
+                        <Color red="0.3009868562221527" green="0.6019737124443054" blue="0.8026315569877625" />
                      </color>
                   </Stop>
                </stops>
@@ -50,16 +50,16 @@
       </Rectangle>
       <Rectangle fx:id="rectSelected" height="86.0" layoutX="191.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="159.0">
          <fill>
-            <LinearGradient endX="0.0" endY="0.0" startX="1.0">
+            <LinearGradient startX="1.0">
                <stops>
                   <Stop>
                      <color>
-                        <Color red="0.5490196347236633" green="0.1921568661928177" blue="0.5960784554481506" />
+                        <Color red="0.17787525057792664" green="0.20691195130348206" blue="0.5263158082962036" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="0.5699999928474426" green="0.6775000095367432" blue="1.0" opacity="0.0" />
+                        <Color red="0.17787525057792664" green="0.20691195130348206" blue="0.5263158082962036" opacity="0.0" />
                      </color>
                   </Stop>
                </stops>

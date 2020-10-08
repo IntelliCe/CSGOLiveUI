@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.csquared.csgo.liveui.ui.component.utilityfield.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root prefHeight="200.0" prefWidth="600.0" style="-fx-background: transparent;" type="Pane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle height="36.0" layoutY="164.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.17787525057792664" green="0.20691195130348206" blue="0.5263158082962036" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.24799999594688416" green="0.5884000062942505" blue="0.800000011920929" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle height="36.0" layoutY="128.0" opacity="0.6" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
+      <ImageView fx:id="imgAvatar" fitHeight="165.0" fitWidth="166.0" layoutX="218.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/smp_s1mple.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="14.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/ic_health.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgArmor" fitHeight="22.0" fitWidth="22.0" layoutX="79.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/ic_kevlar.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="tvPlayerName" layoutX="11.0" layoutY="169.0" text="Player Name">
+         <font>
+            <Font name="EuclidCircularA-Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="tvStats" alignment="CENTER_RIGHT" layoutX="317.0" layoutY="169.0" prefHeight="26.0" prefWidth="176.0" text="K  0  /  A  0  /  D  0">
+         <font>
+            <Font name="EuclidCircularA-Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="tvHealth" layoutX="35.0" layoutY="133.0" text="100">
+         <font>
+            <Font name="EuclidCircularA-Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="tvArmor" layoutX="104.0" layoutY="133.0" text="100">
+         <font>
+            <Font name="EuclidCircularA-Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="tvADR" alignment="CENTER_RIGHT" layoutX="507.0" layoutY="169.0" prefHeight="26.0" prefWidth="80.0" text="ADR  0">
+         <font>
+            <Font name="EuclidCircularA-Bold" size="16.0" />
+         </font>
+      </Label>
+       <UtilityField layoutX="423.0" layoutY="137.0" />
+      <Label fx:id="tvAmmo" alignment="CENTER_RIGHT" layoutX="494.0" layoutY="133.0" prefHeight="26.0" prefWidth="94.0" text="30/90">
+         <font>
+            <Font name="EuclidCircularA-Bold" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</fx:root>

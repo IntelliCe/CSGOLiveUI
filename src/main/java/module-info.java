@@ -24,4 +24,7 @@ module CSGOLiveUI {
 
     exports com.csquared.csgo.liveui.ui.component.sponsorslot;
     opens com.csquared.csgo.liveui.ui.component.sponsorslot to javafx.fxml;
+
+    exports com.csquared.csgo.liveui.ui.component.spectatingpanel;
+    opens com.csquared.csgo.liveui.ui.component.spectatingpanel to javafx.fxml;
 }
