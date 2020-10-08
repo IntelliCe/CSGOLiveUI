@@ -15,8 +15,8 @@ public class MainController {
 
     @FXML
     private void initialize() {
-        scoreboard.setTeamAName("TYLOO");
-        scoreboard.setTeamBName("VICI GAMING");
+        scoreboard.setTeamAName("TEAM CHASELTH");
+        scoreboard.setTeamBName("TEAM FRANKFORT");
         scoreboard.setTeamAScore(5);
         scoreboard.setTeamBScore(10);
     }
