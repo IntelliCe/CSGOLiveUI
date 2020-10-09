@@ -2,6 +2,7 @@ package com.csquared.csgo.liveui.ui.component.spectatingpanel;
 
 import com.csquared.csgo.liveui.ui.component.ColorVal;
 import com.csquared.csgo.liveui.ui.component.ImageVal;
+import com.csquared.csgo.liveui.ui.component.utilityfield.UtilityField;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,11 +16,14 @@ import uk.oczadly.karl.csgsi.state.PlayerState;
 import uk.oczadly.karl.csgsi.state.components.DeserializedEnum;
 import uk.oczadly.karl.csgsi.state.components.Team;
 
+import java.util.List;
+
 @SuppressWarnings("unused")
 public class SpectatingPanel extends Pane {
     @FXML private Label lbPlayerName, lbStats, lbADR, lbAmmo, lbHealth, lbArmor;
     @FXML private ImageView imgAvatar, imgArmor;
     @FXML private Rectangle rectBackground;
+    @FXML private UtilityField utilityField;
 
     public SpectatingPanel() {
         try {
@@ -30,6 +34,11 @@ public class SpectatingPanel extends Pane {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void initialize() {
+        utilityField.setAlignment(UtilityField.Alignment.RIGHT);
     }
 
     public void setPlayer(PlayerState playerState) {
@@ -86,5 +95,9 @@ public class SpectatingPanel extends Pane {
 
     public void setStats(int k, int a, int d) {
         lbStats.setText(String.format("K  %d  /  A  %d  /  D  %d", k, a, d));
+    }
+
+    public void setUtilityField(List<PlayerState.WeaponDetails> utils) {
+        utilityField.setUtilities(utils);
     }
 }

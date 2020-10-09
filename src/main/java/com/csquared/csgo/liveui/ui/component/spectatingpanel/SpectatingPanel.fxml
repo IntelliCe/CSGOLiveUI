@@ -74,7 +74,7 @@
             <Font name="EuclidCircularA-Bold" size="16.0" />
          </font>
       </Label>
-       <UtilityField layoutX="423.0" layoutY="137.0" />
+       <UtilityField fx:id="utilityField" layoutX="419.0" layoutY="137.0" />
       <Label fx:id="lbAmmo" alignment="CENTER_RIGHT" layoutX="494.0" layoutY="133.0" prefHeight="26.0" prefWidth="94.0" text="30/90">
          <font>
             <Font name="EuclidCircularA-Bold" size="20.0" />

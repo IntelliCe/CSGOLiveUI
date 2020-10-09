@@ -1,5 +1,6 @@
 package com.csquared.csgo.liveui.core;
 
+import com.csquared.csgo.liveui.core.util.WeaponHelper;
 import com.csquared.logger.Logger;
 import com.google.gson.Gson;
 import uk.oczadly.karl.csgsi.state.GameState;
@@ -8,9 +9,12 @@ import uk.oczadly.karl.csgsi.state.PlayerState;
 import uk.oczadly.karl.csgsi.state.PlayerState.PlayerStateDetails;
 import uk.oczadly.karl.csgsi.state.PlayerState.WeaponDetails;
 import uk.oczadly.karl.csgsi.state.PlayerState.PlayerMatchStats;
+import uk.oczadly.karl.csgsi.state.components.Weapon;
+
+import java.util.List;
 
 public class GSIActivityHandler {
-    private GSIActivityListener listener;
+    private final GSIActivityListener listener;
     private long handlerTime;
 
     private boolean isFirstState = true;
@@ -78,6 +82,24 @@ public class GSIActivityHandler {
                 } else {
                     if (lastDetails != null) {
                         listener.onSpectatingPlayerAmmoChange(0, 0);
+                    }
+                }
+                // Weapon inventory related
+                List<WeaponDetails> weaponList = playerState.getWeaponsInventory();
+                List<WeaponDetails> lastWeaponList = last.getPlayerState().getWeaponsInventory();
+                if (weaponList != null) {
+                    List<WeaponDetails> utilities = WeaponHelper.getUtilityList(weaponList);
+                    if (lastWeaponList == null) {
+                        listener.onSpectatingPlayerUtilitiesChange(utilities);
+                    } else {
+                        List<WeaponDetails> lastUtilities = WeaponHelper.getUtilityList(lastWeaponList);
+                        if (!WeaponHelper.weaponListEqual(utilities, lastUtilities)) {
+                            listener.onSpectatingPlayerUtilitiesChange(utilities);
+                        }
+                    }
+                } else {
+                    if (lastWeaponList != null) {
+                        listener.onSpectatingPlayerUtilitiesChange(null);
                     }
                 }
                 // PlayerMatchStats related

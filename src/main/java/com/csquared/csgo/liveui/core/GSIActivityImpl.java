@@ -1,12 +1,12 @@
 package com.csquared.csgo.liveui.core;
 
-import com.csquared.csgo.liveui.ui.component.ColorVal;
 import com.csquared.csgo.liveui.ui.component.spectatingpanel.SpectatingPanel;
 import com.csquared.logger.Logger;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 import uk.oczadly.karl.csgsi.state.PlayerState;
-import uk.oczadly.karl.csgsi.state.components.Team;
+
+import java.util.List;
 
 public class GSIActivityImpl implements GSIActivityListener {
     private long lastTickMillis = 0;
@@ -36,7 +36,7 @@ public class GSIActivityImpl implements GSIActivityListener {
         lastTickMillis = System.currentTimeMillis();
         String debugInfo =
                 "Connected\n" +
-                String.format("tickrate: %.2f/s\n", tickRate) +
+                String.format("tick_rate: %.2f/s\n", tickRate) +
                 String.format("handler: %dms", handlerTime);
         Platform.runLater(() -> debugLabel.setText(debugInfo));
     }
@@ -80,6 +80,11 @@ public class GSIActivityImpl implements GSIActivityListener {
     @Override
     public void onSpectatingPlayerAmmoChange(int ammoClip, int ammoReserve) {
         Platform.runLater(() -> spectatingPanel.setAmmo(ammoClip, ammoReserve));
+    }
+
+    @Override
+    public void onSpectatingPlayerUtilitiesChange(List<PlayerState.WeaponDetails> utilities) {
+        Platform.runLater(() -> spectatingPanel.setUtilityField(utilities));
     }
 
     @Override

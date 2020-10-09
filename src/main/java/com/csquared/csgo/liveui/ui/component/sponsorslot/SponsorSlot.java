@@ -37,7 +37,7 @@ public class SponsorSlot extends Pane {
         }
     }
 
-    private TimerTask timerTask = new TimerTask() {
+    private final TimerTask timerTask = new TimerTask() {
         @Override
         public void run() {
             transitionOut.play();
