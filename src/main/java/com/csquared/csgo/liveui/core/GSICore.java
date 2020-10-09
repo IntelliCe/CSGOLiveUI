@@ -15,14 +15,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GSICore {
+    GSIActivityImpl impl;
 
-    public GSICore() {
+    public GSICore(GSIActivityImpl impl) {
+        this.impl = impl;
+    }
+
+    public void start() {
         GSIConfig config = new GSIConfig(1337)
                 .setDescription("Test service for CSGO GSI")
                 .setTimeoutPeriod(5.0)
-                .setBufferPeriod(0.1)
-                .setHeartbeatPeriod(60.0)
-                .setThrottlePeriod(0.1)
+                .setBufferPeriod(0.04)
+                .setHeartbeatPeriod(30.0)
+                .setThrottlePeriod(0.04)
                 .setAuthToken("password", "Q79v5tcxVQ8u")
                 .setAllDataComponents();
 
@@ -41,8 +46,9 @@ public class GSICore {
             Logger.e("CFG", "I/O error: could not write config file.");
         }
 
-        GSIActivityHandler activityHandler = new GSIActivityHandler(new GSIActivityImpl());
+        GSIActivityHandler activityHandler = new GSIActivityHandler(impl);
         GSIObserver observer = (state, context) -> {
+            //Logger.d("TICK", "Tick arrived.");
             activityHandler.handle(state);
         };
 

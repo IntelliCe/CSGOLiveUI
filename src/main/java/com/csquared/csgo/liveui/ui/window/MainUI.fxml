@@ -4,8 +4,11 @@
 <?import com.csquared.csgo.liveui.ui.component.scoreboard.*?>
 <?import com.csquared.csgo.liveui.ui.component.spectatingpanel.*?>
 <?import com.csquared.csgo.liveui.ui.component.sponsorslot.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
 <Pane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background:transparent;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.csquared.csgo.liveui.ui.window.MainController">
    <children>
@@ -22,7 +25,16 @@
             <Scoreboard fx:id="scoreboard" layoutY="42.0" onMouseClicked="#debug" prefHeight="96.0" prefWidth="1920.0" />
             <PlayerList layoutY="520.0" />
             <SponsorSlot layoutX="660.0" layoutY="1000.0" />
-            <SpectatingPanel layoutX="660.0" layoutY="800.0" />
+            <SpectatingPanel fx:id="spectatingPanel" layoutX="660.0" layoutY="800.0" />
+            <Pane layoutX="21.0" layoutY="173.0" prefHeight="85.0" prefWidth="216.0">
+               <children>
+                  <Rectangle height="85.0" opacity="0.49" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="216.0" />
+                  <Label fx:id="lbDebugInfo" alignment="TOP_LEFT" layoutX="8.0" layoutY="7.0" prefHeight="67.0" prefWidth="200.0" text="Not connected">
+                     <font>
+                        <Font name="EuclidCircularA-Regular" size="12.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
          </children>
       </Pane>
    </children>

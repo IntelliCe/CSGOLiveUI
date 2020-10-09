@@ -1,8 +1,12 @@
 package com.csquared.csgo.liveui.ui.window;
 
+import com.csquared.csgo.liveui.core.GSIActivityImpl;
+import com.csquared.csgo.liveui.core.GSICore;
 import com.csquared.csgo.liveui.ui.component.scoreboard.Scoreboard;
+import com.csquared.csgo.liveui.ui.component.spectatingpanel.SpectatingPanel;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import uk.oczadly.karl.csgsi.state.BombState;
 import uk.oczadly.karl.csgsi.state.components.DeserializedEnum;
 
@@ -11,14 +15,26 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainController {
+    @FXML private Label lbDebugInfo;
     @FXML private Scoreboard scoreboard;
+    @FXML private SpectatingPanel spectatingPanel;
 
     @FXML
     private void initialize() {
+        registerGSICore();
+
         scoreboard.setTeamAName("TEAM CHASELTH");
         scoreboard.setTeamBName("TEAM FRANKFORT");
         scoreboard.setTeamAScore(5);
         scoreboard.setTeamBScore(10);
+    }
+
+    private void registerGSICore() {
+        GSIActivityImpl impl = new GSIActivityImpl()
+                .debugLabel(lbDebugInfo)
+                .spectatingPanel(spectatingPanel);
+        GSICore core = new GSICore(impl);
+        core.start();
     }
 
     private int s = 0;

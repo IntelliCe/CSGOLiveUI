@@ -10,7 +10,7 @@
 
 <fx:root prefHeight="200.0" prefWidth="600.0" style="-fx-background: transparent;" type="Pane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Rectangle height="36.0" layoutY="164.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0">
+      <Rectangle fx:id="rectBackground" height="36.0" layoutY="164.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -19,9 +19,14 @@
                         <Color red="0.17787525057792664" green="0.20691195130348206" blue="0.5263158082962036" />
                      </color>
                   </Stop>
+                  <Stop offset="0.00749063670411985">
+                     <color>
+                        <Color red="0.1764705926179886" green="0.2078431397676468" blue="0.5254902243614197" />
+                     </color>
+                  </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="0.24799999594688416" green="0.5884000062942505" blue="0.800000011920929" />
+                        <Color red="0.24705882370471954" green="0.5882353186607361" blue="0.800000011920929" />
                      </color>
                   </Stop>
                </stops>
@@ -44,33 +49,33 @@
             <Image url="@/ic_kevlar.png" />
          </image>
       </ImageView>
-      <Label fx:id="tvPlayerName" layoutX="11.0" layoutY="169.0" text="Player Name">
+      <Label fx:id="lbPlayerName" layoutX="11.0" layoutY="169.0" text="Player Name">
          <font>
             <Font name="EuclidCircularA-Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="tvStats" alignment="CENTER_RIGHT" layoutX="317.0" layoutY="169.0" prefHeight="26.0" prefWidth="176.0" text="K  0  /  A  0  /  D  0">
+      <Label fx:id="lbStats" alignment="CENTER_RIGHT" layoutX="317.0" layoutY="169.0" prefHeight="26.0" prefWidth="176.0" text="K  0  /  A  0  /  D  0">
          <font>
             <Font name="EuclidCircularA-Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="tvHealth" layoutX="35.0" layoutY="133.0" text="100">
+      <Label fx:id="lbHealth" layoutX="35.0" layoutY="133.0" text="100">
          <font>
             <Font name="EuclidCircularA-Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="tvArmor" layoutX="104.0" layoutY="133.0" text="100">
+      <Label fx:id="lbArmor" layoutX="104.0" layoutY="133.0" text="100">
          <font>
             <Font name="EuclidCircularA-Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="tvADR" alignment="CENTER_RIGHT" layoutX="507.0" layoutY="169.0" prefHeight="26.0" prefWidth="80.0" text="ADR  0">
+      <Label fx:id="lbADR" alignment="CENTER_RIGHT" layoutX="507.0" layoutY="169.0" prefHeight="26.0" prefWidth="80.0" text="ADR  0">
          <font>
             <Font name="EuclidCircularA-Bold" size="16.0" />
          </font>
       </Label>
        <UtilityField layoutX="423.0" layoutY="137.0" />
-      <Label fx:id="tvAmmo" alignment="CENTER_RIGHT" layoutX="494.0" layoutY="133.0" prefHeight="26.0" prefWidth="94.0" text="30/90">
+      <Label fx:id="lbAmmo" alignment="CENTER_RIGHT" layoutX="494.0" layoutY="133.0" prefHeight="26.0" prefWidth="94.0" text="30/90">
          <font>
             <Font name="EuclidCircularA-Bold" size="20.0" />
          </font>
