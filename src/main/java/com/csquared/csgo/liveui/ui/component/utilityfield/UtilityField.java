@@ -60,67 +60,63 @@ public class UtilityField extends Pane {
         }
         if (alignment == Alignment.LEFT) {
             int slot = 0;
-            for (int i = 0; i < has(Weapon.FLASH_BANG, false); i++) {
+            for (int i = 0; i < has(Weapon.FLASH_BANG); i++) {
                 slots[slot].setImage(ImageVal.IC_FLASH_BANG);
                 slot++;
             }
-            if (has(Weapon.DECOY, true) == 1) {
+            if (has(Weapon.DECOY) == 1) {
                 slots[slot].setImage(ImageVal.IC_DECOY);
                 slot++;
             }
-            if (has(Weapon.SMOKE_GRENADE, true) == 1) {
+            if (has(Weapon.SMOKE_GRENADE) == 1) {
                 slots[slot].setImage(ImageVal.IC_SMOKE);
                 slot++;
             }
-            if (has(Weapon.INC_GRENADE, true) == 1) {
+            if (has(Weapon.INC_GRENADE) == 1) {
                 slots[slot].setImage(ImageVal.IC_INCENDIARY);
                 slot++;
             }
-            if (has(Weapon.MOLOTOV, true) == 1) {
+            if (has(Weapon.MOLOTOV) == 1) {
                 slots[slot].setImage(ImageVal.IC_MOLOTOV);
                 slot++;
             }
-            if (has(Weapon.HE_GRENADE, true) == 1) {
+            if (has(Weapon.HE_GRENADE) == 1) {
                 slots[slot].setImage(ImageVal.IC_HE_GRENADE);
             }
         } else if (alignment == Alignment.RIGHT) {
             int slot = 3;
-            for (int i = 0; i < has(Weapon.FLASH_BANG, false); i++) {
+            for (int i = 0; i < has(Weapon.FLASH_BANG); i++) {
                 slots[slot].setImage(ImageVal.IC_FLASH_BANG);
                 slot--;
             }
-            if (has(Weapon.DECOY, true) == 1) {
+            if (has(Weapon.HE_GRENADE) == 1) {
                 slots[slot].setImage(ImageVal.IC_DECOY);
                 slot--;
             }
-            if (has(Weapon.SMOKE_GRENADE, true) == 1) {
+            if (has(Weapon.MOLOTOV) == 1) {
                 slots[slot].setImage(ImageVal.IC_SMOKE);
                 slot--;
             }
-            if (has(Weapon.INC_GRENADE, true) == 1) {
+            if (has(Weapon.INC_GRENADE) == 1) {
                 slots[slot].setImage(ImageVal.IC_INCENDIARY);
                 slot--;
             }
-            if (has(Weapon.MOLOTOV, true) == 1) {
+            if (has(Weapon.SMOKE_GRENADE) == 1) {
                 slots[slot].setImage(ImageVal.IC_MOLOTOV);
                 slot--;
             }
-            if (has(Weapon.HE_GRENADE, true) == 1) {
+            if (has(Weapon.DECOY) == 1) {
                 slots[slot].setImage(ImageVal.IC_HE_GRENADE);
             }
         }
     }
 
-    private int has(Weapon w, boolean abortWhenFound) {
-        int amount = 0;
+    private int has(Weapon w) {
         for (WeaponDetails details : utilities) {
             if (details.getWeapon().getEnum() == w) {
-                amount++;
-                if (abortWhenFound) {
-                    return amount;
-                }
+                return details.getAmmoReserve();
             }
         }
-        return amount;
+        return 0;
     }
 }
