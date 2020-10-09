@@ -86,6 +86,7 @@ public class GSIActivityHandler {
                 }
                 // Weapon inventory related
                 List<WeaponDetails> weaponList = playerState.getWeaponsInventory();
+                //Logger.d("UTIL", new Gson().toJson(state));
                 List<WeaponDetails> lastWeaponList = last.getPlayerState().getWeaponsInventory();
                 if (weaponList != null) {
                     List<WeaponDetails> utilities = WeaponHelper.getUtilityList(weaponList);
@@ -104,7 +105,6 @@ public class GSIActivityHandler {
                 }
                 // PlayerMatchStats related
                 PlayerMatchStats stats = playerState.getStatistics();
-                Logger.d("PMS", new Gson().toJson(stats));
                 PlayerMatchStats lastStats = last.getPlayerState().getStatistics();
                 if (stats != null) {
                     if (lastStats == null) {

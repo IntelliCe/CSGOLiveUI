@@ -66,10 +66,14 @@ public class SpectatingPanel extends Pane {
     }
 
     public void setSide(DeserializedEnum<Team> team) {
-        if (team.getEnum() == Team.COUNTER_TERRORIST) {
-            rectBackground.setFill(ColorVal.SPECTATING_CT_BACKGROUND);
-        } else {
-            rectBackground.setFill(ColorVal.SPECTATING_T_BACKGROUND);
+        try {
+            if (team.getEnum() == Team.COUNTER_TERRORIST) {
+                rectBackground.setFill(ColorVal.SPECTATING_CT_BACKGROUND);
+            } else {
+                rectBackground.setFill(ColorVal.SPECTATING_T_BACKGROUND);
+            }
+        } catch (Exception e) {
+
         }
     }
 

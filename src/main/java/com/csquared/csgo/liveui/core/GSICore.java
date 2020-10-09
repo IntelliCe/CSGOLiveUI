@@ -1,6 +1,7 @@
 package com.csquared.csgo.liveui.core;
 
 import com.csquared.logger.Logger;
+import com.google.gson.Gson;
 import uk.oczadly.karl.csgsi.GSIObserver;
 import uk.oczadly.karl.csgsi.GSIServer;
 import uk.oczadly.karl.csgsi.config.GSIConfig;
@@ -48,6 +49,8 @@ public class GSICore {
 
         GSIActivityHandler activityHandler = new GSIActivityHandler(impl);
         GSIObserver observer = (state, context) -> {
+            Logger.d("CONTEXT", new Gson().toJson(context.getRawJsonObject()));
+            Logger.d("STATE", new Gson().toJson(state));
             //Logger.d("TICK", "Tick arrived.");
             activityHandler.handle(state);
         };
