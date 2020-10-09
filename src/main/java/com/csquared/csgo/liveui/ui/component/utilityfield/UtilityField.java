@@ -90,11 +90,11 @@ public class UtilityField extends Pane {
                 slot--;
             }
             if (has(Weapon.HE_GRENADE) == 1) {
-                slots[slot].setImage(ImageVal.IC_DECOY);
+                slots[slot].setImage(ImageVal.IC_HE_GRENADE);
                 slot--;
             }
             if (has(Weapon.MOLOTOV) == 1) {
-                slots[slot].setImage(ImageVal.IC_SMOKE);
+                slots[slot].setImage(ImageVal.IC_MOLOTOV);
                 slot--;
             }
             if (has(Weapon.INC_GRENADE) == 1) {
@@ -102,11 +102,11 @@ public class UtilityField extends Pane {
                 slot--;
             }
             if (has(Weapon.SMOKE_GRENADE) == 1) {
-                slots[slot].setImage(ImageVal.IC_MOLOTOV);
+                slots[slot].setImage(ImageVal.IC_SMOKE);
                 slot--;
             }
             if (has(Weapon.DECOY) == 1) {
-                slots[slot].setImage(ImageVal.IC_HE_GRENADE);
+                slots[slot].setImage(ImageVal.IC_DECOY);
             }
         }
     }
