@@ -1,10 +1,12 @@
 package com.csquared.csgo.liveui.core;
 
+import com.csquared.csgo.liveui.ui.component.ColorVal;
 import com.csquared.csgo.liveui.ui.component.spectatingpanel.SpectatingPanel;
 import com.csquared.logger.Logger;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 import uk.oczadly.karl.csgsi.state.PlayerState;
+import uk.oczadly.karl.csgsi.state.components.Team;
 
 public class GSIActivityImpl implements GSIActivityListener {
     private long lastTickMillis = 0;
@@ -32,39 +34,56 @@ public class GSIActivityImpl implements GSIActivityListener {
     public void onTick(int handlerTime) {
         float tickRate = 1000.0f / (System.currentTimeMillis() - lastTickMillis);
         lastTickMillis = System.currentTimeMillis();
-        StringBuilder builder = new StringBuilder();
-        builder.append(String.format("tickrate:    %.2f/s", tickRate)).append("\n");
-        builder.append(String.format("handler:     %dms", handlerTime));
-        Platform.runLater(() -> debugLabel.setText(builder.toString()));
+        String debugInfo =
+                "Connected\n" +
+                String.format("tickrate: %.2f/s\n", tickRate) +
+                String.format("handler: %dms", handlerTime);
+        Platform.runLater(() -> debugLabel.setText(debugInfo));
     }
 
     @Override
     public void onSpectatingPlayerChange(PlayerState playerState) {
-        spectatingPanel.setPlayer(playerState);
+        Platform.runLater(() -> {
+            spectatingPanel.setPlayerName(playerState.getName());
+            //spectatingPanel.setPlayerAvatar(null);
+            spectatingPanel.setSide(playerState.getTeam());
+
+            if (playerState.getState() != null) {
+                onSpectatingPlayerHealthChange(playerState.getState().getHealth());
+                onSpectatingPlayerArmorChange(playerState.getState().getArmor());
+                onSpectatingPlayerHelmetChange(playerState.getState().hasHelmet());
+            }
+            if (playerState.getSelectedWeapon() != null) {
+                onSpectatingPlayerAmmoChange(playerState.getSelectedWeapon().getAmmoClip(), playerState.getSelectedWeapon().getAmmoReserve());
+            }
+            if (playerState.getStatistics() != null) {
+                onSpectatingPlayerStatsChange(playerState.getStatistics().getKillCount(), playerState.getStatistics().getAssistCount(), playerState.getStatistics().getDeathCount());
+            }
+        });
     }
 
     @Override
     public void onSpectatingPlayerHealthChange(int health) {
-        spectatingPanel.setHealth(health);
+        Platform.runLater(() -> spectatingPanel.setHealth(health));
     }
 
     @Override
     public void onSpectatingPlayerArmorChange(int armor) {
-        spectatingPanel.setArmor(armor);
+        Platform.runLater(() -> spectatingPanel.setArmor(armor));
     }
 
     @Override
     public void onSpectatingPlayerHelmetChange(boolean hasHelmet) {
-        spectatingPanel.setHasHelmet(hasHelmet);
+        Platform.runLater(() -> spectatingPanel.setHasHelmet(hasHelmet));
     }
 
     @Override
     public void onSpectatingPlayerAmmoChange(int ammoClip, int ammoReserve) {
-        spectatingPanel.setAmmo(ammoClip, ammoReserve);
+        Platform.runLater(() -> spectatingPanel.setAmmo(ammoClip, ammoReserve));
     }
 
     @Override
     public void onSpectatingPlayerStatsChange(int k, int a, int d) {
-        spectatingPanel.setStats(k, a, d);
+        Platform.runLater(() -> spectatingPanel.setStats(k, a, d));
     }
 }
