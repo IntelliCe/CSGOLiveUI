@@ -49,8 +49,8 @@ public class GSICore {
 
         GSIActivityHandler activityHandler = new GSIActivityHandler(impl);
         GSIObserver observer = (state, context) -> {
-            Logger.d("CONTEXT", new Gson().toJson(context.getRawJsonObject()));
-            Logger.d("STATE", new Gson().toJson(state));
+            //Logger.d("CONTEXT", new Gson().toJson(context.getRawJsonObject()));
+            //Logger.d("STATE", new Gson().toJson(state));
             //Logger.d("TICK", "Tick arrived.");
             activityHandler.handle(state);
         };

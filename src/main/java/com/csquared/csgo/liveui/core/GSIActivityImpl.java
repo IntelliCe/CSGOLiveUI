@@ -38,10 +38,9 @@ public class GSIActivityImpl implements GSIActivityListener {
         lastTickMillis = System.currentTimeMillis();
         String debugInfo =
                 "Connected - Developer mode\n" +
-                String.format("Core: %s   Ui: %s", AppVal.CORE_VER, AppVal.UI_VER) +
+                String.format("Core: %s   Ui: %s\n", AppVal.CORE_VER, AppVal.UI_VER) +
                 String.format("tick_rate: %.2f/s\n", tickRate) +
-                String.format("handler: %dms <= %dms]\n", handlerTime, System.currentTimeMillis() - lastTickMillis) +
-                String.format("overload: %d", 0);
+                String.format("handler: %dms <= %.1fms", handlerTime, 1000.0 / tickRate);
         Platform.runLater(() -> debugLabel.setText(debugInfo));
     }
 

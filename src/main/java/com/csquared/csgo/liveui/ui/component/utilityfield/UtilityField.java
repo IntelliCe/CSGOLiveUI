@@ -55,10 +55,10 @@ public class UtilityField extends Pane {
 
     private void validate() {
         // display order: flash, decoy, smoke, incendiary, molotov, grenade
-        if (utilities == null || utilities.size() == 0) {
-            for (ImageView slot : slots) {
-                slot.setImage(null);
-            }
+        for (ImageView slot : slots) {
+            slot.setImage(null);
+        }
+        if (utilities == null) {
             return;
         }
         if (alignment == Alignment.LEFT) {

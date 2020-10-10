@@ -39,12 +39,15 @@ public class GSIActivityHandler {
         if (isFirstState) {
             listener.onConnect();
             isFirstState = false;
+            //last = state;
+            //return;
         }
 
         // PlayerState
         PlayerState playerState = state.getPlayerState();
+
         if (playerState != null) {
-            if (last.getPlayerState() == null) {
+            if (last == null || last.getPlayerState() == null) {
                 listener.onSpectatingPlayerChange(playerState);
             } else if (!playerState.getSteamId().equals(last.getPlayerState().getSteamId())) {
                 listener.onSpectatingPlayerChange(playerState);
@@ -72,7 +75,10 @@ public class GSIActivityHandler {
                 }
                 // Selected WeaponDetails related
                 WeaponDetails weaponDetails = playerState.getSelectedWeapon();
-                WeaponDetails lastWeaponDetails = last.getPlayerState().getSelectedWeapon();
+                WeaponDetails lastWeaponDetails = null;
+                if (last.getPlayerState() != null) {
+                    lastWeaponDetails = last.getPlayerState().getSelectedWeapon();
+                }
                 if (weaponDetails != null) {
                     if (lastWeaponDetails == null) {
                         listener.onSpectatingPlayerAmmoChange(weaponDetails.getAmmoClip(), weaponDetails.getAmmoReserve());
@@ -87,9 +93,13 @@ public class GSIActivityHandler {
                         listener.onSpectatingPlayerAmmoChange(0, 0);
                     }
                 }
+
                 // PlayerMatchStats related
                 PlayerMatchStats stats = playerState.getStatistics();
-                PlayerMatchStats lastStats = last.getPlayerState().getStatistics();
+                PlayerMatchStats lastStats = null;
+                if (last.getPlayerState() != null) {
+                    lastStats =  last.getPlayerState().getStatistics();
+                }
                 if (stats != null) {
                     if (lastStats == null) {
                         listener.onSpectatingPlayerStatsChange(stats.getKillCount(), stats.getAssistCount(), stats.getDeathCount());
@@ -114,7 +124,11 @@ public class GSIActivityHandler {
 
         // PlayerList
         Map<String, PlayerState> allPlayerStates = state.getPlayerStates();
-        Map<String, PlayerState> lastAllPlayerStates = last.getPlayerStates();
+        Map<String, PlayerState> lastAllPlayerStates = null;
+        if (last != null) {
+            lastAllPlayerStates = last.getPlayerStates();
+        }
+
         if (allPlayerStates != null) {
             if (lastAllPlayerStates == null) {
                 listener.onPlayerListChange(allPlayerStates);

@@ -5,6 +5,7 @@ module CSGOLiveUI {
     requires uk.oczadly.karl.csgogsi;
     requires kotlin.stdlib;
     requires com.google.gson;
+    requires org.jetbrains.annotations;
 
     exports com.csquared.csgo.liveui.ui.window;
     opens com.csquared.csgo.liveui.ui.window to javafx.fxml, javafx.graphics;
