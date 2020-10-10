@@ -1,5 +1,6 @@
 package com.csquared.csgo.liveui.core;
 
+import com.csquared.csgo.liveui.AppVal;
 import com.csquared.csgo.liveui.ui.component.spectatingpanel.SpectatingPanel;
 import com.csquared.logger.Logger;
 import javafx.application.Platform;
@@ -7,6 +8,7 @@ import javafx.scene.control.Label;
 import uk.oczadly.karl.csgsi.state.PlayerState;
 
 import java.util.List;
+import java.util.Map;
 
 public class GSIActivityImpl implements GSIActivityListener {
     private long lastTickMillis = 0;
@@ -35,9 +37,11 @@ public class GSIActivityImpl implements GSIActivityListener {
         float tickRate = 1000.0f / (System.currentTimeMillis() - lastTickMillis);
         lastTickMillis = System.currentTimeMillis();
         String debugInfo =
-                "Connected\n" +
+                "Connected - Developer mode\n" +
+                String.format("Core: %s   Ui: %s", AppVal.CORE_VER, AppVal.UI_VER) +
                 String.format("tick_rate: %.2f/s\n", tickRate) +
-                String.format("handler: %dms", handlerTime);
+                String.format("handler: %dms <= %dms]\n", handlerTime, System.currentTimeMillis() - lastTickMillis) +
+                String.format("overload: %d", 0);
         Platform.runLater(() -> debugLabel.setText(debugInfo));
     }
 
@@ -90,5 +94,10 @@ public class GSIActivityImpl implements GSIActivityListener {
     @Override
     public void onSpectatingPlayerStatsChange(int k, int a, int d) {
         Platform.runLater(() -> spectatingPanel.setStats(k, a, d));
+    }
+
+    @Override
+    public void onPlayerListChange(Map<String, PlayerState> allPlayerStates) {
+
     }
 }

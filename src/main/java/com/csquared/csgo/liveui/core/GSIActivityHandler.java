@@ -1,5 +1,6 @@
 package com.csquared.csgo.liveui.core;
 
+import com.csquared.csgo.liveui.core.util.PlayerHelper;
 import com.csquared.csgo.liveui.core.util.WeaponHelper;
 import com.csquared.logger.Logger;
 import com.google.gson.Gson;
@@ -12,13 +13,15 @@ import uk.oczadly.karl.csgsi.state.PlayerState.PlayerMatchStats;
 import uk.oczadly.karl.csgsi.state.components.Weapon;
 
 import java.util.List;
+import java.util.Map;
 
 public class GSIActivityHandler {
     private final GSIActivityListener listener;
     private long handlerTime;
 
     private boolean isFirstState = true;
-    private GameState last;
+    private GameState last = null;
+    private List<WeaponDetails> lastSpectatingUtilities = null;
 
     public GSIActivityHandler(GSIActivityListener listener) {
         this.listener = listener;
@@ -36,9 +39,9 @@ public class GSIActivityHandler {
         if (isFirstState) {
             listener.onConnect();
             isFirstState = false;
-            last = state;
-            return;
         }
+
+        // PlayerState
         PlayerState playerState = state.getPlayerState();
         if (playerState != null) {
             if (last.getPlayerState() == null) {
@@ -84,25 +87,6 @@ public class GSIActivityHandler {
                         listener.onSpectatingPlayerAmmoChange(0, 0);
                     }
                 }
-                // Weapon inventory related
-                List<WeaponDetails> weaponList = playerState.getWeaponsInventory();
-                //Logger.d("UTIL", new Gson().toJson(state));
-                List<WeaponDetails> lastWeaponList = last.getPlayerState().getWeaponsInventory();
-                if (weaponList != null) {
-                    List<WeaponDetails> utilities = WeaponHelper.getUtilityList(weaponList);
-                    if (lastWeaponList == null) {
-                        listener.onSpectatingPlayerUtilitiesChange(utilities);
-                    } else {
-                        List<WeaponDetails> lastUtilities = WeaponHelper.getUtilityList(lastWeaponList);
-                        if (!WeaponHelper.weaponListEqual(utilities, lastUtilities)) {
-                            listener.onSpectatingPlayerUtilitiesChange(utilities);
-                        }
-                    }
-                } else {
-                    if (lastWeaponList != null) {
-                        listener.onSpectatingPlayerUtilitiesChange(null);
-                    }
-                }
                 // PlayerMatchStats related
                 PlayerMatchStats stats = playerState.getStatistics();
                 PlayerMatchStats lastStats = last.getPlayerState().getStatistics();
@@ -128,6 +112,33 @@ public class GSIActivityHandler {
             }
         }
 
+        // PlayerList
+        Map<String, PlayerState> allPlayerStates = state.getPlayerStates();
+        Map<String, PlayerState> lastAllPlayerStates = last.getPlayerStates();
+        if (allPlayerStates != null) {
+            if (lastAllPlayerStates == null) {
+                listener.onPlayerListChange(allPlayerStates);
+            } else {
+                if (!PlayerHelper.playerMapEqual(allPlayerStates, lastAllPlayerStates)) {
+                    listener.onPlayerListChange(allPlayerStates);
+                }
+                // spectating utility
+                if (playerState != null) {
+                    List<WeaponDetails> spectatingWeaponList = allPlayerStates.get(playerState.getSteamId()).getWeaponsInventory();
+                    List<WeaponDetails> spectatingUtilityList = WeaponHelper.getUtilityList(spectatingWeaponList);
+                    if (!WeaponHelper.weaponListEqual(spectatingUtilityList, lastSpectatingUtilities)) {
+                        listener.onSpectatingPlayerUtilitiesChange(spectatingUtilityList);
+                    }
+                    lastSpectatingUtilities = spectatingUtilityList;
+                }
+            }
+        } else {
+            if (lastAllPlayerStates != null) {
+                listener.onPlayerListChange(null);
+            }
+        }
+
+        last = state;
         handlerTime = System.currentTimeMillis() - startHandlingTime;
     }
 }

@@ -9,6 +9,9 @@ import java.util.List;
 public class WeaponHelper {
 
     public static WeaponDetails getPrimaryWeapon(List<WeaponDetails> list) {
+        if (list == null) {
+            return null;
+        }
         for (WeaponDetails weapon : list) {
             Weapon.Type type = weapon.getWeaponType().getEnum();
             if (type == Weapon.Type.RIFLE || type == Weapon.Type.MACHINE_GUN || type == Weapon.Type.SNIPER_RIFLE ||
@@ -26,6 +29,9 @@ public class WeaponHelper {
     }
 
     public static List<WeaponDetails> getUtilityList(List<WeaponDetails> list) {
+        if (list == null) {
+            return null;
+        }
         List<WeaponDetails> utilities = new ArrayList<>();
         for (WeaponDetails weapon : list) {
             if (weapon.getWeaponType().getEnum() == Weapon.Type.GRENADE) {
@@ -36,6 +42,12 @@ public class WeaponHelper {
     }
 
     public static boolean weaponListEqual(List<WeaponDetails> v1, List<WeaponDetails> v2) {
+        if (v1 != null ^ v2 != null) {
+            return false;
+        }
+        if (v1 == null) {
+            return true;
+        }
         for (WeaponDetails weapon : v1) {
             WeaponDetails w = getWeaponFromList(v2, weapon);
             if (w == null) {
@@ -47,6 +59,9 @@ public class WeaponHelper {
     }
 
     private static WeaponDetails getWeaponFromList(List<WeaponDetails> list, WeaponDetails weapon) {
+        if (list == null) {
+            return null;
+        }
         for (WeaponDetails w : list) {
             if (w.getWeapon().getEnum() == weapon.getWeapon().getEnum()) {
                 return w;
