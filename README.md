@@ -12,5 +12,6 @@ OpenJFX: https://openjfx.io/
 
 ## Misc
 
-This project is currently built by Java, but may use Kotlin in the future for some classes for null-safety.
+I strongly recommend MacType to be used during the running of CSGOLiveUI to provide anti-alias for font to improve the appearance.
 
+MacType: https://www.mactype.net/
